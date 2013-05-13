@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/var/opt/hdfs/hadoop-${user.name}</value>
+<description>A base for other directories.</description>
+</property>
+
+<property>
+<name>fs.default.name</name>
+<value>hdfs://master:54310</value>
+</property>
+
+<property>
+<name>fs.trash.interval</name>
+<value>10080</value>
+</property>
+
+<property>
+<name>hadoop.proxyuser.oozie.hosts</name>
+<value>*</value>
+</property>
+
+<property>
+<name>hadoop.proxyuser.oozie.groups</name>
+<value>*</value>
+</property>
+
+</configuration>
