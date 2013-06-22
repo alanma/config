@@ -35,9 +35,9 @@
     -->
 	<!-- <core name="core_1" schema="../../core/conf/schema.xml" instanceDir="core_1" dataDir="core_1_idx_data" /> -->
     <core name="passwd" instanceDir="passwd" />
-	<core name="shard_1" instanceDir="shard_1" schema="multicore/passwd/conf/schema.xml" dataDir="data1"/>
-	<core name="shard_2" instanceDir="shard_2" schema="multicore/passwd/conf/schema.xml" dataDir="data2"/>
-	<core name="shard_3" instanceDir="shard_3" schema="multicore/passwd/conf/schema.xml" dataDir="data3"/>
+	<core name="shard_1" instanceDir="shard_1" schema="../../passwd/conf/schema.xml" dataDir="data1"/>
+	<core name="shard_2" instanceDir="shard_2" schema="../../passwd/conf/schema.xml" dataDir="data2"/>
+	<core name="shard_3" instanceDir="shard_3" schema="../../passwd/conf/schema.xml" dataDir="data3"/>
 	<!--
 	<core name="shard_4" instanceDir="shard_4" schema="passwd/conf/schema.xml" dataDir="data4"/>
 	<core name="shard_5" instanceDir="shard_5" schema="passwd/conf/schema.xml" dataDir="data5"/>
