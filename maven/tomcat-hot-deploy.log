@@ -1,0 +1,30 @@
+http://longyl-live-cn.iteye.com/blog/1602527
+比如有一个父模块xfl（类型为pom的maven项目），其中的pom.xml为：
+    <modules>
+        <module>xfl-core</module>
+        <module>xfl-jugg</module>
+        <module>xfl-mysql</module>
+    </modules>
+
+xfl-core和xfl-jugg都是jar类型的maven项目，xfl-mysql是war类型的maven项目。他们之间的依赖关系：xfl-core依赖xfl-jugg，xfl-mysql依赖xfl-core。
+如果修改xfl-core或者xfl-jugg里面的java代码，通常需要重新部署。然而网上常见的是用jetty插件来避免重新部署，进而实现修改java代码都热部署。
+
+本人使用jetty觉得不是很爽（有个小问题一直没解决：jetty:stop命令后，总是出现一个小错误）。
+于是决定用maven-tomcat-plugin来试试，用了3天晚上（从22点到02点，白天要看孩子，%>_<%）终于实现了热部署功能。
+ 
+只需在父项目xfl的pom加入：
+		<plugin>
+	          <groupId>org.apache.tomcat.maven</groupId>
+	          <artifactId>tomcat7-maven-plugin</artifactId>
+	          <version>2.0-beta-1</version>
+			<configuration>
+                             <path>/xfl-mysql</path>
+                             <!--这是关键要设置为true，默认设置是false，类比Tomcat里server.xml中的设置-->
+                             <contextReloadable>true</contextReloadable>
+			</configuration>
+	        </plugin>
+
+
+对xfl用命令mvn tomcat7:run，一劳永逸。
+
+这样再修改java代码，不需要重新部署，也不需要多次重新启动tomcat了。
