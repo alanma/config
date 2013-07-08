@@ -1,0 +1,11 @@
+ java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -Dbootstrap_conf=true -DzkRun=solr1.payegis.com:9983 -DzkHost=solr1.payegis.com:9983,solr2.payegis.com:9983 -DnumShards=2 -jar start.jar
+ 
+ java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -DzkRun=solr2.payegis.com:9983 -DzkHost=solr1.payegis.com:9983,solr2.payegis.com:9983 -jar start.jar
+
+ HI i have setup solrcloud cluster with 2 shard 2 replica configuration.But when i start my shard nodes and only one replica node for each shard,the shard leader nodes contineously prints a message, "waiting until we see more replicas up,total 3 found 2 timeoutin 175000",the wait time for other replicas to come up here is around 3 min.
+ 
+My question is how to reduce this wait time,to speedup development ?
+ In solr.xml, add a cores attribute of leaderVoteWait=0. It defaults to 180000 (3 minutes).
+This is simply to protect against starting the cluster with an old node - you don't want it to become the leader before other nodes get to participate in the election - so we wait until the known replicas are up to ensure they can participate in the election.
+If you are careful to not start the cluster in a way that an out of data node comes up before up to date nodes, it's not necessary.
+
