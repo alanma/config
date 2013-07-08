@@ -1,0 +1,1 @@
+-Dcom.sun.management.jmxremote.port=9999 -Dcom.s.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
