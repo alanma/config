@@ -1,0 +1,20 @@
+Solr Cloud 安装部署
+1：下载安装
+（1）下载：在http://www.apache.org/dyn/closer.cgi/lucene/solr/ 下载合适版本的solr（4.2以上）
+（2）安装：解压缩到指定位置(如/opt目录下)
+2：配置
+配置solr/example/multicore下的配置文件（包括solr.xml/schemal.xml/solrconfig.xml）
+(根据需求变化，配置时与程序人员协调工作)
+3：运行
+Shard1：
+#cd /opt/solr-x.x.x
+#java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -Dbootstrap_conf=true -DzkRun=hostname1:9983 -DzkHost=hostname1:9983,hostname2:9983 -DnumShards=2 -jar start.jar
+
+Shard2：
+#cd /opt/solr-x.x.x
+#java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -DzkRun=hostname2:9983 -DzkHost=hostname1:9983,hostname2:9983 -DnumShards=2 -jar start.jar
+4：监控
+访问http://ip1:8983/solr检查是否部署完成
+
+注：虽然命令行中zookeeper的端口指向9983但是由于zookeeper内部还会使用9984和9985,所以需要对集群中的机器的9984和9985端口开例外。、
+需要开例外的端口：8983  9983  9984  9985 
