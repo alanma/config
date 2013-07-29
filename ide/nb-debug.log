@@ -1,0 +1,3 @@
+
+jpda.listen=maven
+netbeans.deploy.debugmode=true
