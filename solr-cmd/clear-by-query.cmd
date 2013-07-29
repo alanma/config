@@ -1,0 +1,1 @@
+java -Durl=http://192.168.111.205:8983/solr/core4/update -Ddata=args  -jar post.jar "<delete><query>*:*</query></delete>" 
