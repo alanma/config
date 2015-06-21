@@ -7,7 +7,7 @@
                   <archive>
                      <manifest>
                          <addClasspath>true</addClasspath>
-                         <mainClass>com.payegis.mqueue.MQueueService</mainClass>
+                         <mainClass>com.mypkg.MQueueService</mainClass>
                          <classpathPrefix>libs/</classpathPrefix>
                      </manifest> 
                   </archive>

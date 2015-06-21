@@ -1,0 +1,56 @@
+agent.sources =  clicktrack applog
+agent.channels = chan0 chan1
+agent.sinks =    sink0 sink1
+ 
+agent.channels.chan0.type = memory
+agent.channels.chan0.capacity = 100000
+agent.channels.chan0.transactionCapacity = 1000
+ 
+agent.channels.chan1.type = file
+agent.channels.chan1.checkpointDir = /tmp/flume/checkpoint
+agent.channels.chan1.dataDirs = /tmp/flume/data
+agent.channels.chan11.checkpointInterval = 300000
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+agent.sources.clicktrack.type = avro
+agent.sources.clicktrack.channels = chan0
+agent.sources.clicktrack.port = 9988
+agent.sources.clicktrack.bind = 0.0.0.0
+agent.sources.clicktrack.interceptors = ts ihost
+agent.sources.clicktrack.interceptors.ts.type = timestamp
+agent.sources.clicktrack.interceptors.ihost.type = host
+agent.sources.clicktrack.interceptors.ihost.useIP = false
+agent.sources.clicktrack.interceptors.ihost.hostHeader = host
+ 
+agent.sinks.sink0.type = hdfs
+agent.sinks.sink0.channel = chan0
+agent.sinks.sink0.hdfs.fileType = DataStream
+agent.sinks.sink0.hdfs.rollInterval = 300
+agent.sinks.sink0.hdfs.rollSize = 0
+agent.sinks.sink0.hdfs.rollCount = 0
+agent.sinks.sink0.hdfs.batchSize = 1000
+agent.sinks.sink0.hdfs.filePrefix = %{host}-
+agent.sinks.sink0.hdfs.timeZone = GMT
+agent.sinks.sink0.hdfs.path = hdfs://host:54310/data/clickstream/raw/%Y/%m/%d/%H
+ 
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+agent.sources.applog.type = avro
+agent.sources.applog.channels = chan1
+agent.sources.applog.port = 9986
+agent.sources.applog.bind = 0.0.0.0
+agent.sources.applog.interceptors = ts ihost
+agent.sources.applog.interceptors.ts.type = timestamp
+agent.sources.applog.interceptors.ihost.type = host
+agent.sources.applog.interceptors.ihost.useIP = false
+agent.sources.applog.interceptors.ihost.hostHeader = host
+ 
+agent.sinks.sink1.type = hdfs
+agent.sinks.sink1.channel = chan1
+agent.sinks.sink1.hdfs.fileType = DataStream
+agent.sinks.sink1.hdfs.rollInterval = 300
+agent.sinks.sink1.hdfs.rollSize = 0
+agent.sinks.sink1.hdfs.rollCount = 0
+agent.sinks.sink1.hdfs.batchSize = 1000
+agent.sinks.sink1.hdfs.filePrefix = %{host}-
+agent.sinks.sink1.hdfs.timeZone = GMT
+agent.sinks.sink1.hdfs.path = hdfs://host:54310/data/applog/raw/%Y/%m/%d/%H-%z

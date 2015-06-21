@@ -1,12 +1,12 @@
-package com.payegis.caesar.appservice.flumelog4j;
+package com.mydomain.appservice.flumelog4j;
 
 import org.apache.commons.logging.Log;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import com.cloudera.flume.log4j.appender.FlumeLog4jAvroAppender;
-import com.payegis.caesar.appservice.config.Config;
-import com.payegis.caesar.common.util.Log4jFactory;
+import com.mydomain.appservice.config.Config;
+import com.mydomain.common.util.Log4jFactory;
 
 public class FlumeLogger
 {

@@ -1,6 +1,6 @@
- java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -Dbootstrap_conf=true -DzkRun=solr1.payegis.com:9983 -DzkHost=solr1.payegis.com:9983,solr2.payegis.com:9983 -DnumShards=2 -jar start.jar
+ java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -Dbootstrap_conf=true -DzkRun=solr1.mydomain.com:9983 -DzkHost=solr1.mydomain.com:9983,solr2.mydomain.com:9983 -DnumShards=2 -jar start.jar
  
- java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -DzkRun=solr2.payegis.com:9983 -DzkHost=solr1.payegis.com:9983,solr2.payegis.com:9983 -jar start.jar
+ java -Djetty.port=8983 -Dsolr.solr.home=multicore/ -DzkRun=solr2.mydomain.com:9983 -DzkHost=solr1.mydomain.com:9983,solr2.mydomain.com:9983 -jar start.jar
  
  [11:13:05] 孙美玲: java  -Dbootstrap_confdir=./solr/collection1 -Dsolr.solr.home=./solr  -DzkRun -DzkHost=localhost:9983 -DnumShards=2 -jar start.jar  这个在solr cloud里的master里也可以
 
