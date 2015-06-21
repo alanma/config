@@ -10,7 +10,7 @@ export JAVA_HOME=/usr/java/jdk1.6.0_43
 
 # Extra Java CLASSPATH elements.  Optional.
 # export HADOOP_CLASSPATH="<extra_entries>:$HADOOP_CLASSPATH"
-export HADOOP_CLASSPATH="$HADOOP_CLASSPATH:/opt/payegis/core/*:/opt/payegis/thirdparty/*"
+export HADOOP_CLASSPATH="$HADOOP_CLASSPATH:/opt/mydomain/core/*:/opt/mydomain/thirdparty/*"
 # The maximum amount of heap to use, in MB. Default is 1000.
 # export HADOOP_HEAPSIZE=2000
 export HADOOP_HEAPSIZE=4096
@@ -24,7 +24,7 @@ export HADOOP_DATANODE_OPTS="-Dcom.sun.management.jmxremote $HADOOP_DATANODE_OPT
 export HADOOP_BALANCER_OPTS="-Dcom.sun.management.jmxremote $HADOOP_BALANCER_OPTS"
 export HADOOP_JOBTRACKER_OPTS="-Dcom.sun.management.jmxremote $HADOOP_JOBTRACKER_OPTS"
 # export HADOOP_TASKTRACKER_OPTS=
-export HADOOP_TASKTRACKER_OPTS="-classpath /opt/payegis/core/*:/opt/payegis/thirdparty/*"
+export HADOOP_TASKTRACKER_OPTS="-classpath /opt/mydomain/core/*:/opt/mydomain/thirdparty/*"
 # The following applies to multiple commands (fs, dfs, fsck, distcp etc)
 # export HADOOP_CLIENT_OPTS
 

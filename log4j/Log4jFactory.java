@@ -1,4 +1,4 @@
-package com.payegis.caesar.common.util;
+package com.mydomain.common.util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -9,7 +9,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>com.payegis.geoip.test.GeoIPTest</mainClass>
+              <mainClass>com.pkg.MainClass</mainClass>
             </manifest>
           </archive>
         </configuration>
